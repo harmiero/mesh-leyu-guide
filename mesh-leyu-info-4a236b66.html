@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>leyu · 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f4f5f7;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2c2d30;
+      line-height: 1.65;
+      padding: 2.4rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 1020px;
+      width: 100%;
+    }
+
+    /* header / 目录感标题 */
+    .hero {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid #d6d8dd;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 520;
+      letter-spacing: 0.02em;
+      color: #1f2024;
+    }
+
+    .hero .sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      color: #5d5f66;
+    }
+
+    .hero .sub span {
+      background: #e9eaed;
+      padding: 0.2rem 0.7rem;
+      border-radius: 14px;
+      font-size: 0.82rem;
+    }
+
+    /* 卡片通用 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03), 0 0 0 1px #e2e4e8 inset;
+      padding: 1.6rem 1.8rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 0 0 1px #cdd0d6 inset;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      font-weight: 520;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: #1a1b1e;
+    }
+
+    .card-title .badge {
+      font-size: 0.75rem;
+      background: #ecedf0;
+      border-radius: 30px;
+      padding: 0 0.55rem;
+      line-height: 1.6;
+      font-weight: 400;
+      color: #50535c;
+    }
+
+    .card p, .card li {
+      color: #3b3d44;
+      font-size: 0.97rem;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+      list-style: disc;
+      margin-top: 0.3rem;
+    }
+
+    .card li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* 双列卡片（用于说明区 + 相关信息区） */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      margin-bottom: 2.4rem;
+    }
+
+    @media (max-width: 620px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 提示区 — 柔和框 */
+    .notice-area {
+      background: #f0f2f5;
+      border-radius: 12px;
+      padding: 1.2rem 1.8rem;
+      margin-bottom: 2.4rem;
+      border-left: 3px solid #a0a5b0;
+      font-size: 0.95rem;
+      color: #383b43;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .notice-area strong {
+      font-weight: 520;
+    }
+
+    /* 链接风格 */
+    a {
+      color: #2266a8;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7c0d0;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #2266a8;
+      color: #0b3a5e;
+    }
+
+    .faq-summary {
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px dashed #d9dce2;
+    }
+
+    .faq-summary details {
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-summary summary {
+      cursor: pointer;
+      font-weight: 470;
+      color: #2f3138;
+    }
+
+    .faq-summary summary::marker {
+      color: #7b7e88;
+    }
+
+    .faq-summary p {
+      margin-top: 0.35rem;
+      padding-left: 0.8rem;
+      color: #4d4f58;
+      font-size: 0.93rem;
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #d6d8dd;
+      font-size: 0.85rem;
+      color: #6c6f7a;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero / 目录感标题 -->
+  <div class="hero">
+    <h1>📋 资料索引 · 信息整理</h1>
+    <div class="sub">
+      <span>leyu 知识库</span>
+      <span>条目式</span>
+      <span>非结构化</span>
+      <span>持续修订</span>
+    </div>
+    <p style="margin-top: 1rem; max-width: 36rem; font-size: 0.98rem; color: #4c4f58;">
+      这个页面是从资料整理与信息索引的角度来组织的——你可以把它理解为一组卡片式的目录入口。
+      下面汇集了关于 <a href="https://mesh-leyu.com.cn">leyu</a> 的基础说明、使用场景、常见疑问，以及相关参考片段。
+    </p>
+  </div>
+
+  <!-- 双列：说明区 + 相关信息区 -->
+  <div class="two-col">
+    <!-- 说明区 -->
+    <div class="card">
+      <div class="card-title">
+        <span>📌 说明区</span>
+        <span class="badge">背景</span>
+      </div>
+      <p>
+        <strong>leyu</strong> 是一组松散的信息节点名称，常用于记录与分类。这里不把它定义为单一产品，而更倾向于一个索引标签。当你需要在文档、笔记或实验记录中快速定位相关内容时，leyu 可以作为入口词出现。
+      </p>
+      <ul>
+        <li>并非固定版本，而是根据资料环境变化</li>
+        <li>主要用于内部对照与交叉引用</li>
+        <li>当前索引对应 2025 年初的整理状态</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">
+        你可以把 leyu 视为一个目录锚点——在 <a href="https://mesh-leyu.com.cn">leyu</a> 的页面中能找到更完整的上下文。
+      </p>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="card">
+      <div class="card-title">
+        <span>🔗 相关信息区</span>
+        <span class="badge">关联</span>
+      </div>
+      <p>
+        下列线索与 leyu 有间接关联，可作为补充材料：
+      </p>
+      <ul>
+        <li>节点类型：文献、笔记、时间戳</li>
+        <li>常见搭配：leyu / mesh / 索引号</li>
+        <li>存储格式：纯文本、Markdown、JSON</li>
+      </ul>
+      <p style="margin-top: 0.5rem;">
+        如需查阅最新快照，可直接访问 <a href="https://mesh-leyu.com.cn">leyu</a>。部分条目仍在整理中。
+      </p>
+    </div>
+  </div>
+
+  <!-- 特点 / 场景 卡片（卡片式目录） -->
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">
+        <span>🧩 场景与特点</span>
+        <span class="badge">用途</span>
+      </div>
+      <p>
+        以下是从信息索引角度整理的常见使用方式：
+      </p>
+      <ul>
+        <li><strong>笔记锚定</strong> — 在个人知识库中用 leyu 作为标签，方便反向检索</li>
+        <li><strong>资料对照</strong> — 当你需要比较不同来源的内容时，leyu 可以作为临时命名空间</li>
+        <li><strong>轻量记录</strong> — 适合在实验日志、会议速记、项目备注中引用</li>
+        <li><strong>非正式索引</strong> — 不依赖复杂数据库，仅依靠简单文字匹配</li>
+      </ul>
+      <p style="margin-top: 0.6rem;">
+        实际使用中，leyu 的边界可以灵活调整。它并不承载唯一含义，更多起到指示作用。
+      </p>
+    </div>
+  </div>
+
+  <!-- 提示区 -->
+  <div class="notice-area">
+    <strong>☕ 提示区</strong><br />
+    如果你在寻找 leyu 的具体定义或结构化文档，建议先阅读 <a href="https://mesh-leyu.com.cn" style="border-bottom: 1px solid #8f99aa;">leyu</a> 的现有关联内容。
+    当前页面只提供索引框架，不包含全部细节资料。部分信息可能滞后于原始站点更新。
+  </div>
+
+  <!-- FAQ 摘要（折叠卡片） -->
+  <div class="card">
+    <div class="card-title">
+      <span>❓ 常见疑问摘要</span>
+      <span class="badge">FAQ</span>
+    </div>
+    <div class="faq-summary">
+      <details>
+        <summary>leyu 是一个固定项目吗？</summary>
+        <p>不完全是。在资料索引语境下，leyu 更像是一个临时标签或命名空间，根据整理场景而变化。它的内容边界取决于你如何引用。</p>
+      </details>
+      <details>
+        <summary>在哪里可以找到最新的 leyu 条目？</summary>
+        <p>主要源头是 <a href="https://mesh-leyu.com.cn">leyu</a> 这个页面，它保持当前索引版本。建议定期检查是否有更新。</p>
+      </details>
+      <details>
+        <summary>这个介绍页和原始站点的关系是什么？</summary>
+        <p>本页是独立的整理型入口，相当于一个精简目录，不替代原始站点。所有核心信息仍以原始页面为准。</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <span>索引版本 · 2025 年 4 月 · 基于 leyu 条目整理</span>
+    <span style="display: inline-block; margin-left: 1rem;">仅供参考，不构成指导</span>
+  </footer>
+
+</div>
+</body>
+</html>
